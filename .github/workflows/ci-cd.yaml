@@ -41,3 +41,12 @@ jobs:
         with:
           name: model-artifacts
           path: .
+
+      - name: Build docker image
+        run : docker build -t ml-model .
+
+      - name: verify image Build
+        run : docker images
+
+      - name: Run docker container
+        run : docker run -p 5000:5000 ml-model
