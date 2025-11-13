@@ -20,3 +20,11 @@ jobs:
 
       - name: train model
         run: python train.py 
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifacts@v4
+        with:
+          name: model-artifacts
+          path: |
+            LR.pkl
+            LE.pkl
