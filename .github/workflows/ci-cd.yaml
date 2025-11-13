@@ -23,7 +23,7 @@ jobs:
         run: python train.py
 
       - name: uplaod trained model as artifact
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: model-artifact
           path: |
