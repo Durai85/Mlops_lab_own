@@ -39,5 +39,5 @@ jobs:
       - name: Download trained model artifacts
         uses: actions/download-artifact@v4
         with:
-          name: model-artifact
+          name: model-artifacts
           path: .
