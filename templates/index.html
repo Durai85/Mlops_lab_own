@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Prediction</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Iris Flower Prediction</h1>
+        <form action="/prediction" method="post">
+            <label for="sepLen">Sepel Length: </label>
+            <input type="text" id="sepLen" name="sepLen">
+            <label for="sepWid">Sepel Width: </label>
+            <input type="text" id="sepWid" name="sepWid">
+            <label for="petLen">Petal Length: </label>
+            <input type="text" id="petLen" name="petLen">
+            <label for="petWid">Petal Width: </label>
+            <input type="text" id="petWid" name="petWid">
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+            <h3>Prediction : {{result}}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
