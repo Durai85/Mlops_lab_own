@@ -1,12 +1,12 @@
-name: CI-CD pipeline
+name: CI CD pipeline
 on: [push]
 
 jobs:
-  train:
+  train: 
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
+      - name: checkout code
         uses: actions/checkout@v4
 
       - name: setup python
@@ -14,17 +14,16 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Install requirements
+        run : pip install -r requirements.txt
 
       - name: train model
-        run: python train.py 
+        run : python train.py
 
-      - name: Upload model artifacts
+      - name: upload model artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: model-artifacts
+          name: model-artifact
           path: |
             LR.pkl
             LE.pkl
@@ -36,17 +35,17 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
 
-      - name: Download trained model artifacts
+      - name: download artifacts
         uses: actions/download-artifact@v4
-        with:
-          name: model-artifacts
+        with: 
+          name: model-artifact
           path: .
 
-      - name: Build docker image
-        run : docker build -t ml-model .
+      - name: docker build
+        run : docker build -t mlops-model .
 
-      - name: verify image Build
+      - name: verify image
         run : docker images
 
-      - name: Run docker container
-        run : docker run -p 5000:5000 ml-model
+      - name: Run container
+        run : docker run -d --name mlops-model-container -p 5000:5000 ml-model
