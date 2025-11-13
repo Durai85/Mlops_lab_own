@@ -1,5 +1,4 @@
 name: CI-CD pipeline
-
 on: [push]
 
 jobs:
@@ -7,25 +6,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      name: Checkout code
+      uses: actions/checkout@4
 
-      - name: Setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
+      name: setup python
+      uses: actions/setup-python@4
+      with:
+        python-version: "3.9"
 
-      - name: Install Requirements
-        run: |
-          pip install -r requirements.txt
-      
-      - name: model train
-        run: python train.py
+      name: Install dependencies
+      run: |
+        pip install -r requirements.txt
 
-      - name: uplaod trained model as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: model-artifact
-          path: |
-            LR.pkl
-            LE.pkl
+      name: train model
+      run: python train.py 
