@@ -14,3 +14,18 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
+
+      - name: Install Requirements
+        run: |
+          pip install -r Requirements
+      
+      - name: model train
+        run: python train.py
+
+      - name: uplaod trained model as artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: model-artifact
+          path: |
+            LR.pkl
+            LE.pkl
