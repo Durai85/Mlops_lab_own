@@ -6,17 +6,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      name: Checkout code
-      uses: actions/checkout@4
+      - name: Checkout code
+        uses: actions/checkout@4
 
-      name: setup python
-      uses: actions/setup-python@4
-      with:
-        python-version: "3.9"
+      - name: setup python
+        uses: actions/setup-python@4
+        with:
+          python-version: "3.9"
 
-      name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
-      name: train model
-      run: python train.py 
+      - name: train model
+        run: python train.py 
